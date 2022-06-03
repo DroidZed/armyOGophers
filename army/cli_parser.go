@@ -11,15 +11,22 @@ func showHelp() {
 
 func ParseArgs(args []string) {
 
-	if len(args) == 0 {
-		showHelp()
-	} else if (len(args) == 1) && (args[0] == "?" || args[0] == "help") {
+	// TODO: make sure you use the `flags` package next time...
+
+	if (len(args) == 0) || ((len(args) == 1) && (args[0] == "?" || args[0] == "help")) {
 		showHelp()
 	} else {
 
-		for _, arg := range args {
+		if args[0] == "os" {
+			OsDisplay()
+		} else if args[0] == "arch" {
+			ArchDisplay()
+		} else {
 
-			fmt.Println(arg)
+			for _, arg := range args {
+
+				fmt.Println(arg)
+			}
 		}
 	}
 }
